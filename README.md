@@ -22,4 +22,16 @@ ctrl + a + d
 edit etc/LeakManager.conf file
 </pre>
 
+# MassInsert
+<pre>
+CSV Format
+email,username,password,database
+
+CSV Format example:
+admin@admin.com,admin,admin1234,appXPTO
+jose@admin.com,,zezin123,appXPTO
+paula@admin.com,paula,123456,appXPTO
+zika@admin.com,virus,nicole,appXPTO
+
+</pre>
 ![LeakManager](leakManager.png)
