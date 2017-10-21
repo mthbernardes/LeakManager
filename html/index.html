@@ -86,7 +86,6 @@
                </table>
             </div>
          </div>
-
          <div class="col-lg-12">
             <div class="well">
                <legend>Last 10 Entries</legend>
@@ -158,6 +157,28 @@
                <button type="submit" class="btn btn-primary" id="btnEnviar">SendFile</button>
             </div>
          </div>
+
+         <div class="col-lg-12">
+            <div class="well">
+              <form class="form-horizontal">
+               <legend>Update Passwords</legend>
+               <div class="form-group">
+                  <label for="inputPassword" class="col-lg-2 control-label">Password Hash</label>
+                  <div class="col-lg-10">
+                     <input class="form-control" name="password-hash" placeholder="Hash Password" type="text">
+                  </div>
+              </div>
+
+                  <div class="form-group">
+                     <label for="inputPassword" class="col-lg-2 control-label">Password Cracked</label>
+                     <div class="col-lg-10">
+                        <input class="form-control" name="password-cracked" placeholder="Cracked Password" type="text">
+                     </div>
+                 </div>
+             </form>
+                  <button type="submit" class="btn btn-primary" onclick="updatePassword()">Search</button>
+               </div>
+            </div>
       </div>
    </body>
 </html>

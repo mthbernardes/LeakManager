@@ -21,6 +21,13 @@ def massInsert(body,request,response):
     message = 'You have loaded %d new leaks the process to register will happen in bakground!' % count
     return "<script>alert('%s');document.location = '/'</script>" % message
 
+@admin_area.post('/updatePassword')
+def updatePassword(body):
+    db = database()
+    totalupdates = db.updatePassword(body['password-old'],body['password-new'])
+    message = '%d passwords were updated!' % totalupdates
+    return {"message":message}
+
 @admin_area.get('/delete/{leakid}',output=hug.output_format.html)
 def deleteLeak(leakid):
     db = database()

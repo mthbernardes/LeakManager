@@ -34,7 +34,6 @@ class database(object):
         return results
 
     def saveMassLeaks(self,leaks):
-        print("THREAD STARTED")
         allLeaks = list()
         for leak in leaks:
             leak = str(leak).strip()
@@ -45,4 +44,10 @@ class database(object):
         db = models()
         db.leaks.bulk_insert(allLeaks)
         db.commit()
-        print("END OF THREAD")
+
+    def updatePassword(self,oldpass,newpass):
+        db = models()
+        total = db(db.leaks.password == oldpass).count()
+        db(db.leaks.password == oldpass).update(password=newpass)
+        db.commit()
+        return total

@@ -57,3 +57,21 @@ $.ajax({
     }
 });
 }
+
+function updatePassword() {
+var infos = {};
+infos['password-old'] = document.getElementsByName('password-hash')[0].value
+infos['password-new'] = document.getElementsByName('password-cracked')[0].value
+$.ajax({
+    url: '/updatePassword',
+    type: 'POST',
+    data: JSON.stringify(infos),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    success: function(data) {
+          alert(data['message']);
+          window.location.reload(true);
+        }
+    });
+}
