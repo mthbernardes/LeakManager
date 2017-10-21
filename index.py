@@ -43,7 +43,7 @@ def singleInsert(body):
 def search(body):
     db = database()
     results = list()
-    leaks = db.getEmail(body['email-search'])
+    leaks = db.getLeaks(body['search'],body['searchby'])
     for leak in leaks:
         results.append({'id':leak.id,'email':leak.email,'username':leak.username,'password':leak.password,'database':leak.database})
     return results

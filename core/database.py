@@ -9,10 +9,12 @@ class database(object):
         db.leaks.insert(username=username,email=email,password=password,database=database)
         db.commit()
 
-    def getEmail(self,email):
+    def getLeaks(self,data,searchby):
         db = models()
-        results = db(db.leaks.email.contains(email,case_sensitive=False)).select()
-        #results = db(db.leaks.email.like(email)).select()
+        if searchby == 'email':
+            results = db(db.leaks.email.contains(data,case_sensitive=False)).select()
+        elif searchby == 'password':
+            results = db(db.leaks.password.contains(data,case_sensitive=False)).select()
         return results
 
     def lastEntries(self,):
