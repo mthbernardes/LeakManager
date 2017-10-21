@@ -2,3 +2,5 @@ jinja2
 pymongo
 pydal
 hug
+gunicorn
+uwsgi
