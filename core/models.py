@@ -1,3 +1,6 @@
+#!/usr/local/bin/python3
+# coding: utf-8
+
 from pydal import DAL, Field
 
 class models(object):

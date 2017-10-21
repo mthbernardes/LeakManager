@@ -1,3 +1,6 @@
+#!/usr/local/bin/python3
+# coding: utf-8
+
 from jinja2 import FileSystemLoader, Environment
 
 template_engine = Environment(loader=FileSystemLoader("html"))
