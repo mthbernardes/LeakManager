@@ -63,22 +63,6 @@ def index():
     lastLeaks = db.lastEntries()
     return template.render({'total':totalLeaks,'leaks':lastLeaks})
 
-@admin_area.get('/static/img/{img_file}',output=hug.output_format.image('png'))
-def staticimg(img_file):
-    if '..' in img_file:
-        raise
-    return open('static/img/{}'.format(img_file),'rb')
-
-@admin_area.get('/static/js/{static_file}',output=hug.output_format.html)
-def staticjs(static_file):
-    if '..' in static_file:
-        raise
-    print(static_file)
-    return open('static/js/{}'.format(static_file)).read()
-
-@admin_area.get('/static/css/{static_file}',output=hug.output_format.html)
-def staticcss(static_file):
-    if '..' in static_file:
-        raise
-    print(static_file)
-    return open('static/css/{}'.format(static_file)).read()
+@hug.static('/static')
+def my_static_dirs():
+    return('static/',)
