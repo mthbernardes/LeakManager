@@ -13,4 +13,6 @@ class models(object):
             Field('email'),
             Field('password'),
             Field('database'))
+        db.define_table('counter',
+            Field('total','integer'))
         return db
