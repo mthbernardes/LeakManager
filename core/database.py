@@ -14,6 +14,8 @@ class database(object):
         db = models()
         if searchby == 'email':
             results = db(db.leaks.email.contains(data,case_sensitive=False)).select()
+        elif searchby == 'username':
+            results = db(db.leaks.username.contains(data,case_sensitive=False)).select()
         elif searchby == 'password':
             results = db(db.leaks.password.contains(data,case_sensitive=False)).select()
         return results
@@ -51,14 +53,14 @@ class database(object):
 
     def addCounter(self,n):
         db = models()
-        total = db(db.counter.id == 1).select().first()
+        total = db(db.counter.id > 0).select().first()
         totalLeaks = total.total if total else 0
         db.counter.update_or_insert(db.counter.id==1,total=totalLeaks+n)
         db.commit()
 
     def delCounter(self,):
         db = models()
-        total = db(db.counter.id == 1).select().first()
+        total = db(db.counter.id > 0).select().first()
         totalLeaks = total.total if total else 0
         if totalLeaks > 0:
             db(db.counter.id == 1).update(total=totalLeaks-1)
@@ -66,7 +68,7 @@ class database(object):
 
     def getTotal(self,):
         db = models()
-        total = db(db.counter.id == 1).select().first()
+        total = db(db.counter.id > 0).select().first()
         return total.total if total else 0
 
     def updatePassword(self,oldpass,newpass):
